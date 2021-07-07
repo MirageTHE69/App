@@ -25,13 +25,7 @@ public class Settings extends AppCompatActivity {
             }
         });
 
-        btn = (Button)findViewById(R.id.buttonau);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openaboutus();
-            }
-        });
+
 
         btn = (Button)findViewById(R.id.buttoncu);
         btn.setOnClickListener(new View.OnClickListener() {
