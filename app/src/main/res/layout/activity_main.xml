@@ -7,13 +7,14 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="402dp"
         android:layout_height="105dp"
         android:text="Are you in Emergency or file a accident??"
         android:textColor="@color/black"
-        android:textSize="35dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -28,7 +29,7 @@
         android:layout_height="80dp"
         android:text="Press a button and capture a image"
         android:textColor="#67686b"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.188"
@@ -49,34 +50,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.592"/>
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="206dp"
-        android:layout_height="55dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:background="@drawable/rounded_btn"
-        app:srcCompat="@drawable/home_page1"
-        android:scaleType="fitCenter"/>
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="206dp"
-        android:layout_height="55dp"
-        android:background="@drawable/rounded_btn1"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/settings1" />
 
     <!--ImageView
         android:id="@+id/click_image"

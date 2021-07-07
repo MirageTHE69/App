@@ -8,6 +8,9 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -20,43 +23,35 @@ public class Image_loader extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_image_loader);
 
         camera_open_id = (Button)findViewById(R.id.camera_button);
         click_image_id = (ImageView)findViewById(R.id.click_image);
-        camera_open_id.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v)
-            {
+        Intent intent = getIntent();
+        Bitmap bitmap = (Bitmap) intent.getParcelableExtra("image");
+        click_image_id.setImageBitmap(bitmap);
 
-                // Create the camera_intent ACTION_IMAGE_CAPTURE
-                // it will open the camera for capture the image
-                Intent camera_intent
-                        = new Intent(MediaStore
-                        .ACTION_IMAGE_CAPTURE);
-
-                // Start the activity with camera_intent,
-                // and request pic id
-                startActivityForResult(camera_intent, pic_id);
-            }
-        });
     }
-    protected void onActivityResult(int requestCode,
-                                    int resultCode,
-                                    Intent data) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.the_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-        // Match the request 'pic id with requestCode
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == pic_id) {
+        switch (item.getItemId()){
+            case R.id.setp:
+                Intent i = new Intent(this,Settings.class);
+                startActivity(i);
+                break;
 
-            // BitMap is data structure of image file
-            // which stor the image in memory
-            Bitmap photo = (Bitmap) data.getExtras()
-                    .get("data");
-
-            // Set the image in imageview for display
-            click_image_id.setImageBitmap(photo);
+            case R.id.fun:
+                Image_loader.this.finish();
+                System.exit(0);
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

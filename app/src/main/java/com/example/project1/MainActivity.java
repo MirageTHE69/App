@@ -10,6 +10,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -53,22 +55,46 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     protected void onActivityResult(int requestCode,
                                     int resultCode,
                                     Intent data) {
 
-
+        // Match the request 'pic id with requestCode
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == pic_id) {
 
             // BitMap is data structure of image file
-            // which stor the image in memory
+            // which store the image in memory
             Bitmap photo = (Bitmap) data.getExtras()
                     .get("data");
 
-            // Set the image in imageview for display
-            click_image_id.setImageBitmap(photo);
+            Intent link_intent = new Intent(MainActivity.this,Image_loader.class);
+            Bitmap bitmap = photo;
+            link_intent.putExtra("image", bitmap);
+            startActivity(link_intent);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.the_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.setp:
+                Intent i = new Intent(this,Settings.class);
+                startActivity(i);
+                break;
+
+            case R.id.fun:
+                MainActivity.this.finish();
+                System.exit(0);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
